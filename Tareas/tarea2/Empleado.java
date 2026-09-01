@@ -5,20 +5,21 @@ public class Empleado {
   private final String materno;
   private final int horasExtra;
   private final double sueldoBase;
-  private final int anioIngreso;
+  private final int aIngreso;
 
   public static final double PRECIO_HORA_EXTRA = 276.5;
   public static final double PORCENTAJE_PRESTACION = 0.03;
 
+  // a = año
   public Empleado(int numeroDeTrabajador, String nombres, String paterno, String materno,
-      int horasExtra, double sueldoBase, int anioIngreso) {
+      int horasExtra, double sueldoBase, int aIngreso) {
     this.numeroDeTrabajador = numeroDeTrabajador;
     this.nombres = nombres;
     this.paterno = paterno;
     this.materno = materno;
     this.horasExtra = horasExtra;
     this.sueldoBase = sueldoBase;
-    this.anioIngreso = anioIngreso;
+    this.aIngreso = aIngreso;
   }
 
   public int getNumeroDeTrabajador() {
@@ -37,24 +38,24 @@ public class Empleado {
     return sueldoBase;
   }
 
-  public int getAnioIngreso() {
-    return anioIngreso;
+  public int getAIngreso() {
+    return aIngreso;
   }
 
-  public int calcularAntiguedad(int anioActual) {
-    return anioActual - anioIngreso;
+  public int calcularAntiguedad(int aActual) {
+    return aActual - aIngreso;
   }
 
   public double calcularPagoHorasExtra() {
     return horasExtra * PRECIO_HORA_EXTRA;
   }
 
-  public double calcularPrestacion(int anioActual) {
-    return sueldoBase * PORCENTAJE_PRESTACION * calcularAntiguedad(anioActual);
+  public double calcularPrestacion(int aActual) {
+    return sueldoBase * PORCENTAJE_PRESTACION * calcularAntiguedad(aActual);
   }
 
-  public double calcularSueldo(int anioActual) {
-    return sueldoBase + calcularPagoHorasExtra() + calcularPrestacion(anioActual);
+  public double calcularSueldo(int aActual) {
+    return sueldoBase + calcularPagoHorasExtra() + calcularPrestacion(aActual);
   }
 
   @Override
@@ -65,7 +66,7 @@ public class Empleado {
         + ", materno='" + materno + '\''
         + ", horasExtra=" + horasExtra
         + ", sueldoBase=" + sueldoBase
-        + ", anioIngreso=" + anioIngreso
+        + ", añoIngreso=" + aIngreso
         + '}';
   }
 }

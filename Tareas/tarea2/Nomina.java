@@ -28,24 +28,24 @@ public class Nomina {
       String materno = partes[3].trim();
       int horasExtra = Integer.parseInt(partes[4].trim());
       double sueldoBase = Double.parseDouble(partes[5].trim());
-      int anioIngreso = Integer.parseInt(partes[6].trim());
+      int aIngreso = Integer.parseInt(partes[6].trim());
 
       empleados.insertarElemento(i - 1,
           new Empleado(numeroDeTrabajador, nombres, paterno, materno,
-              horasExtra, sueldoBase, anioIngreso));
+              horasExtra, sueldoBase, aIngreso));
     }
 
-    int anioActual = 2026;
+    int aActual = 2026;
 
     int indiceMayorAntiguedad = 0;
     int indiceMenorAntiguedad = 0;
     for (int i = 1; i < empleados.longitud(); i++) {
-      if (empleados.obtenerElemento(i).calcularAntiguedad(anioActual)
-          > empleados.obtenerElemento(indiceMayorAntiguedad).calcularAntiguedad(anioActual)) {
+      if (empleados.obtenerElemento(i).calcularAntiguedad(aActual)
+          > empleados.obtenerElemento(indiceMayorAntiguedad).calcularAntiguedad(aActual)) {
         indiceMayorAntiguedad = i;
       }
-      if (empleados.obtenerElemento(i).calcularAntiguedad(anioActual)
-          < empleados.obtenerElemento(indiceMenorAntiguedad).calcularAntiguedad(anioActual)) {
+      if (empleados.obtenerElemento(i).calcularAntiguedad(aActual)
+          < empleados.obtenerElemento(indiceMenorAntiguedad).calcularAntiguedad(aActual)) {
         indiceMenorAntiguedad = i;
       }
     }
@@ -55,10 +55,10 @@ public class Nomina {
 
     System.out.println("Trabajador con MAYOR antigüedad: "
         + mayor.getNombreCompleto() + " ("
-        + mayor.calcularAntiguedad(anioActual) + " años)");
+        + mayor.calcularAntiguedad(aActual) + " años)");
     System.out.println("Trabajador con MENOR antigüedad: "
         + menor.getNombreCompleto() + " ("
-        + menor.calcularAntiguedad(anioActual) + " años)");
+        + menor.calcularAntiguedad(aActual) + " años)");
 
     System.out.println();
     System.out.printf("%-8s %-30s %-10s %-12s %-10s %-12s %-12s%n",
@@ -73,9 +73,9 @@ public class Nomina {
           e.getNombreCompleto(),
           e.getHorasExtra(),
           e.getSueldoBase(),
-          e.calcularAntiguedad(anioActual),
+          e.calcularAntiguedad(aActual),
           e.calcularPagoHorasExtra(),
-          e.calcularSueldo(anioActual));
+          e.calcularSueldo(aActual));
     }
   }
 }
